@@ -17,5 +17,23 @@ fetch(url)
       console.log(lat)
       console.log(lon)
 
-  });
+    fetch(ocUrl)
+        .then(response => response.json())  
+        .then(data => {
+            console.log(data)
+            $(".temp").text("Temp: " + data.current.temp)
+            $(".wind").text("Wind: " + data.current.wind_speed)
+            $(".humidity").text("Humidity: " + data.current.humidity)
+            $(".uv").text("UV Index: " + data.current.uvi)
+            $(".date").text(moment().format('LLL'))
+        })
+
+});
+
+fetch(forecast)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+
+    })
 
