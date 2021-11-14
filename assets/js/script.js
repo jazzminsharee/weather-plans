@@ -5,3 +5,17 @@ var url = "https://api.openweathermap.org/data/2.5/weather?q=" + testCity + "&ap
 var forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + testCity + "&appid=" + myKey + "&units=imperial"
 
 
+
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+      console.log(data)
+      var lat = data.coord.lat
+      var lon = data.coord.lon
+      var ocUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + myKey + "&units=imperial"
+      console.log(lat)
+      console.log(lon)
+
+  });
+
