@@ -3,6 +3,8 @@ var testCity = "Sacramento"
 var myKey = "b7cd031e64f6a5980262c7acabdf2831"
 var url = "https://api.openweathermap.org/data/2.5/weather?q=" + testCity + "&appid=" + myKey + "&units=imperial"
 var forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + testCity + "&appid=" + myKey + "&units=imperial"
+
+
 $(".search").on("click", function(event) {
     event.preventDefault()
 
@@ -35,6 +37,10 @@ fetch(forecast)
     .then(response => response.json())
     .then(data => {
         console.log(data)
+        $(".d1-temp").text("Temp: " + data.list[1].main.temp)
+        $(".d1-wind").text("Wind: " + data.list[1].wind.speed)
+        $(".d1-humidity").text("Humidity: " + data.list[1].main.humidity)
+        $(".d1-date").text(moment().add(1, "days").format('LLL'))
 
     })
 
